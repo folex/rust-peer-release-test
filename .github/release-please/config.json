@@ -17,6 +17,7 @@
     "crates/waiting-queues": {},
     "crates/local-vm": {},
     "crates/uuid-utils": {},
+    "crates/test-utils": {},
     "crates/fs-utils": {},
     "crates/log-utils": {},
     "crates/config-utils": {},
@@ -38,7 +39,6 @@
     "crates/peer-metrics": {},
     "crates/spell-event-bus": {},
     "sorcerer": {},
-    "particle-node/tests/builtins": {},
     "particle-node": {
       "package-name": "rust-peer"
     },
