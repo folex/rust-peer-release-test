@@ -31,8 +31,8 @@ jobs:
         run: echo "${RELEASE_PLEASE_OUTPUT}" | jq
 
 
-  spell:
-    runs-on: builder
+  rust-peer:
+    runs-on: ubuntu-latest
 
     needs: release-please
     if: ${{ needs.release-please.outputs.releases-created }}
@@ -60,19 +60,23 @@ jobs:
       - name: Build particle-node
         run: cargo build --release -p particle-node
 
-      - name: Install cargo-workspaces
-        uses: baptiste0928/cargo-install@v1.3.0
-        with:
-          crate: cargo-workspaces
+      # - name: Install cargo-workspaces
+      #   uses: baptiste0928/cargo-install@v1.3.0
+      #   with:
+      #     crate: cargo-workspaces
 
-      - name: Publish to crates.io
-        run: |
-          cargo ws publish \
-            --no-git-commit \
-            --allow-dirty \
-            --from-git \
-            --skip-published \
-            --yes
+      # - name: Publish to crates.io
+      #   run: |
+      #     cargo ws publish \
+      #       --no-git-commit \
+      #       --allow-dirty \
+      #       --from-git \
+      #       --skip-published \
+      #       --yes
+
+      - name: Rename particle-node to rust-peer
+        working-directory: ./target/release/
+        run: mv particle-node rust-peer
 
       - name: Calculate SHA256
         id: sha
@@ -92,15 +96,15 @@ jobs:
             ./target/release/rust-peer_SHA256_SUMS
           tag_name: ${{ needs.release-please.outputs.rust-peer-tag-name }}
 
-     - name: Update version in node-distro repo
-       uses: benc-uk/workflow-dispatch@v1
-       with:
-         workflow: update_fluence
-         repo: fluencelabs/node-distro
-         ref: 'main'
-         token: ${{ secrets.PERSONAL_TOKEN }}
-         inputs: '{
-           "version": "${{ needs.release-please.rust-peer-tag-name }}",
-           "url": "${{ steps.package-url.outputs.result }}",
-           "sha256": "${{ steps.sha.outputs.sha256 }}"
-         }'
+     # - name: Update version in node-distro repo
+     #   uses: benc-uk/workflow-dispatch@v1
+     #   with:
+     #     workflow: update_fluence
+     #     repo: fluencelabs/node-distro
+     #     ref: 'main'
+     #     token: ${{ secrets.PERSONAL_TOKEN }}
+     #     inputs: '{
+     #       "version": "${{ needs.release-please.rust-peer-tag-name }}",
+     #       "url": "${{ steps.package-url.outputs.result }}",
+     #       "sha256": "${{ steps.sha.outputs.sha256 }}"
+     #     }'
