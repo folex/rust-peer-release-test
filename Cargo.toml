@@ -28,7 +28,7 @@ members = [
     "crates/peer-metrics",
     "crates/spell-event-bus",
     "sorcerer",
-    "particle-node/tests/builtins",
+    "crates/builtins-tests",
     "particle-node",
     "aquamarine",
     "particle-protocol",

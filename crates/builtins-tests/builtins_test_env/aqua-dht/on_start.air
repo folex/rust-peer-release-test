@@ -1,0 +1,12 @@
+
+    (xor
+        (seq
+            (seq
+                (call relay ("peer" "timestamp_sec") [] timestamp0)
+                (call relay ("aqua-dht" "register_key") [key timestamp0 false 0])
+            )
+            (call relay ("op" "return") ["ok"])
+        )
+        (call relay ("op" "return") [%last_error%.$.instruction])
+    )
+    

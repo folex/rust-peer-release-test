@@ -65,7 +65,6 @@ now-millis = { path = "../crates/now-millis" }
 local-vm = { path = "../crates/local-vm" }
 control-macro = { path = "../crates/control-macro" }
 json-utils = { path = "../crates/json-utils" }
-builtins = { path = "./tests/builtins"}
 fluence-spell-dtos = { workspace = true }
 
 fluence-app-service = { workspace = true }
