@@ -50,6 +50,6 @@
     "connection-pool": {},
     "script-storage": {},
     "spell-storage": {},
-    "particle-execution": {},
+    "particle-execution": {}
   }
 }
