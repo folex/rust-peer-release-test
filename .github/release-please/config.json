@@ -17,7 +17,6 @@
     "crates/waiting-queues": {},
     "crates/local-vm": {},
     "crates/uuid-utils": {},
-    "crates/test-utils": {},
     "crates/fs-utils": {},
     "crates/log-utils": {},
     "crates/config-utils": {},
