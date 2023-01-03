@@ -39,7 +39,6 @@
     "crates/peer-metrics": {},
     "crates/spell-event-bus": {},
     "sorcerer": {},
-    "crates/builtins-tests": {},
     "particle-node": {
       "package-name": "rust-peer"
     },
