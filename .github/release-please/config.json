@@ -32,7 +32,6 @@
     "crates/toml-utils": {},
     "crates/air-interpreter-fs": {},
     "crates/builtins-deployer": {},
-    "crates/created-swarm": {},
     "crates/toy-vms": {},
     "crates/connected-client": {},
     "crates/test-constants": {},
